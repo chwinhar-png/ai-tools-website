@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J04TBXQ06W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-J04TBXQ06W');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J04TBXQ06W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J04TBXQ06W');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 導航王 | 2026 全球最強 AI 工具矩陣</title>
-    <meta name="description" content="精選全球最強 AI 工具，涵蓋寫作、繪圖、生產力與開發者工具。">
+    
+    <link rel="alternate" hreflang="zh-Hant" href="https://ai-tools-website-xi.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://ai-tools-website-xi.vercel.app/?lang=en" />
+    
+    <title id="site-title">AI 導航王 | 2026 全球最強 AI 工具矩陣</title>
+    <meta name="description" id="site-desc" content="精選全球最強 AI 工具，涵蓋寫作、繪圖、生產力與開發者工具。">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -32,66 +36,55 @@
                 <i data-lucide="zap" class="text-blue-500 w-8 h-8"></i>
                 <span class="text-2xl font-bold tracking-tight text-white">AI <span class="text-blue-500">Navigator</span></span>
             </div>
-            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-400">
-                <a href="#" class="hover:text-blue-400 transition">工具導航</a>
-                <a href="#articles" class="hover:text-blue-400 transition">AI 資訊</a>
-                <a href="#" class="hover:text-blue-400 transition">提交工具</a>
+            
+            <div class="flex items-center space-x-6">
+                <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-400">
+                    <a href="#" id="nav-tools" class="hover:text-blue-400 transition">工具導航</a>
+                    <a href="#articles" id="nav-info" class="hover:text-blue-400 transition">AI 資訊</a>
+                    <a href="#" id="nav-submit" class="hover:text-blue-400 transition">提交工具</a>
+                </div>
+                
+                <div class="flex bg-slate-800/50 rounded-lg p-1 border border-white/5">
+                    <button id="lang-zh" onclick="setLanguage('zh')" class="px-3 py-1 rounded-md text-xs font-bold transition-all">中文</button>
+                    <button id="lang-en" onclick="setLanguage('en')" class="px-3 py-1 rounded-md text-xs font-bold transition-all">EN</button>
+                </div>
             </div>
         </div>
     </nav>
 
     <div class="max-w-7xl mx-auto px-6 mt-8">
         <div class="ad-placeholder w-full h-24 flex items-center justify-center rounded-xl text-slate-500 text-sm">
-            <span>廣告投放位置 (例如: Google AdSense 728x90)</span>
+            <span id="ad-top">廣告投放位置 (728x90)</span>
         </div>
     </div>
 
     <main class="max-w-7xl mx-auto px-6 py-12">
         <div class="mb-10 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">探索 AI 的無限可能</h1>
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto">精選 2026 年全球最強大的 AI 生產力工具與 Agent，助你效率翻倍。</p>
+            <h1 id="main-h1" class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">探索 AI 的無限可能</h1>
+            <p id="main-p" class="text-slate-400 text-lg max-w-2xl mx-auto">精選 2026 年全球最強大的 AI 生產力工具與 Agent，助你效率翻倍。</p>
         </div>
 
-        <div class="glass p-2 rounded-full max-w-3xl mx-auto mb-12 flex flex-wrap gap-1 justify-center sticky top-20 z-40 border border-white/10">
-            <button class="category-btn active px-5 py-2 rounded-full text-slate-300 hover:text-white text-sm transition" onclick="filterTools('all', this)">全部</button>
-            <button class="category-btn px-5 py-2 rounded-full text-slate-300 hover:text-white text-sm transition" onclick="filterTools('llm', this)">語言模型</button>
-            <button class="category-btn px-5 py-2 rounded-full text-slate-300 hover:text-white text-sm transition" onclick="filterTools('image', this)">AI 繪圖</button>
-            <button class="category-btn px-5 py-2 rounded-full text-slate-300 hover:text-white text-sm transition" onclick="filterTools('video', this)">視頻/音頻</button>
-            <button class="category-btn px-5 py-2 rounded-full text-slate-300 hover:text-white text-sm transition" onclick="filterTools('productivity', this)">生產力</button>
-            <button class="category-btn px-5 py-2 rounded-full text-slate-300 hover:text-white text-sm transition" onclick="filterTools('coding', this)">代碼開發</button>
-        </div>
+        <div id="category-bar" class="glass p-2 rounded-full max-w-3xl mx-auto mb-12 flex flex-wrap gap-1 justify-center sticky top-20 z-40 border border-white/10">
+            </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
             <div class="lg:col-span-3">
-                <div id="tool-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    </div>
+                <div id="tool-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
             </div>
 
             <aside class="space-y-8 sidebar">
                 <div class="ad-placeholder w-full h-[300px] flex items-center justify-center rounded-2xl text-slate-500 text-sm sticky top-40">
-                    側欄廣告位 (300x250)
+                    <span id="ad-side">側欄廣告位 (300x250)</span>
                 </div>
 
                 <section id="articles" class="glass p-6 rounded-2xl">
                     <h2 class="text-lg font-bold text-white mb-5 flex items-center">
                         <i data-lucide="book-open" class="w-5 h-5 mr-2 text-blue-500"></i>
-                        最新 AI 精選資訊
+                        <span id="news-title">最新 AI 精選資訊</span>
                     </h2>
-                    <ul class="space-y-4">
-                        <li>
-                            <a href="#" class="text-sm text-slate-400 hover:text-blue-400 transition line-clamp-2">1. 深度解析：2026 年企業如何應用 AI Agent 自動化流程</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-slate-400 hover:text-blue-400 transition line-clamp-2">2. 如何利用 OpenClaw 建立私有化 AI 網關？</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-slate-400 hover:text-blue-400 transition line-clamp-2">3. 提示詞工程指南：從入門到精通的 50 個技巧</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-slate-400 hover:text-blue-400 transition line-clamp-2">4. AI 繪圖版權終極審判：創作者必須知道的法律風險</a>
-                        </li>
-                    </ul>
-                    <button class="w-full mt-6 py-2 border border-blue-500/30 rounded-xl text-blue-500 text-xs hover:bg-blue-500/10 transition">
+                    <ul class="space-y-4" id="article-list">
+                        </ul>
+                    <button id="view-more-btn" class="w-full mt-6 py-2 border border-blue-500/30 rounded-xl text-blue-500 text-xs hover:bg-blue-500/10 transition">
                         查看更多文章 (共 100 篇)
                     </button>
                 </section>
@@ -100,105 +93,138 @@
     </main>
 
     <footer class="mt-20 border-t border-white/10 py-12 text-center bg-[#010409]">
-        <p class="text-slate-500 text-sm">© 2026 AI Navigator. All rights reserved. 讓 AI 觸手可及。</p>
-        <p class="text-slate-600 text-xs mt-2">全球最強 AI 工具導航站，每日更新。</p>
+        <p id="footer-copy" class="text-slate-500 text-sm">© 2026 AI Navigator. All rights reserved. 讓 AI 觸手可及。</p>
+        <p id="footer-sub" class="text-slate-600 text-xs mt-2">全球最強 AI 工具導航站，每日更新。</p>
     </footer>
 
     <script>
-        // --- 1. AI 工具數據庫 (在這裡添加或修改工具) ---
+        // --- 1. 多語系翻譯數據 ---
+        const i18n = {
+            zh: {
+                siteTitle: "AI 導航王 | 2026 全球最強 AI 工具矩陣",
+                siteDesc: "精選全球最強 AI 工具，涵蓋寫作、繪圖、生產力與開發者工具。",
+                navTools: "工具導航",
+                navInfo: "AI 資訊",
+                navSubmit: "提交工具",
+                mainH1: "探索 AI 的無限可能",
+                mainP: "精選 2026 年全球最強大的 AI 生產力工具與 Agent，助你效率翻倍。",
+                newsTitle: "最新 AI 精選資訊",
+                viewMore: "查看更多文章 (共 100 篇)",
+                footerCopy: "© 2026 AI Navigator. All rights reserved. 讓 AI 觸手可及。",
+                footerSub: "全球最強 AI 工具導航站，每日更新。",
+                categories: { all: "全部", llm: "語言模型", image: "影像生成", video: "視頻音頻", productivity: "生產力工具", coding: "代碼開發" },
+                articles: [
+                    "1. 深度解析：2026 年企業如何應用 AI Agent 自動化流程",
+                    "2. 如何利用 OpenClaw 建立私有化 AI 網關？",
+                    "3. 提示詞工程指南：從入門到精通的 50 個技巧",
+                    "4. AI 繪圖版權終極審判：創作者必須知道的法律風險"
+                ]
+            },
+            en: {
+                siteTitle: "AI Navigator | World's Best AI Tool Matrix 2026",
+                siteDesc: "The ultimate directory for AI tools, covering writing, design, productivity, and coding.",
+                navTools: "Directory",
+                navInfo: "AI News",
+                navSubmit: "Submit Tool",
+                mainH1: "Explore the AI Infinite",
+                mainP: "Handpicked 2026's most powerful AI productivity tools and agents to skyrocket your workflow.",
+                newsTitle: "Latest AI Insights",
+                viewMore: "View All Articles (100+)",
+                footerCopy: "© 2026 AI Navigator. All rights reserved. Making AI accessible to everyone.",
+                footerSub: "World's leading AI directory, updated daily.",
+                categories: { all: "All", llm: "LLM", image: "Design", video: "Video/Audio", productivity: "Productivity", coding: "Coding" },
+                articles: [
+                    "1. Deep Dive: How Enterprises Use AI Agents in 2026",
+                    "2. Building a Private AI Gateway with OpenClaw",
+                    "3. Prompt Engineering: 50 Tips from Beginner to Master",
+                    "4. AI Art Copyright: What Creators Need to Know"
+                ]
+            }
+        };
+
+        // --- 2. 雙語數據庫 ---
         const aiTools = [
-            // LLM - 語言模型
-            { name: "ChatGPT", desc: "OpenAI 旗下的全能型 AI 助手，GPT-4o 驅動。", cat: "llm", icon: "message-circle", url: "#", color: "text-emerald-500", bg: "bg-emerald-500/10" },
-            { name: "Claude 3.5 Sonnet", desc: "Anthropic 推出，長文本理解與代碼能力極強。", cat: "llm", icon: "brain", url: "#", color: "text-orange-400", bg: "bg-orange-400/10" },
-            { name: "Google Gemini", desc: "Google 原生多模態模型，深度整合 Google 生態。", cat: "llm", icon: "search", url: "#", color: "text-blue-400", bg: "bg-blue-400/10" },
-            { name: "Perplexity AI", desc: "AI 驅動的對話式搜尋引擎，提供精確引用來源。", cat: "llm", icon: "globe", url: "#", color: "text-cyan-400", bg: "bg-cyan-400/10" },
-            { name: "Poe", desc: "Quora 推出的 AI 平台，聚合全球主流 LLM 於一身。", cat: "llm", icon: "zap", url: "#", color: "text-purple-400", bg: "bg-purple-400/10" },
-            
-            // Image - AI 繪圖
-            { name: "Midjourney", desc: "頂級 AI 繪圖工具，以超寫實與藝術感著稱。", cat: "image", icon: "palette", url: "#", color: "text-indigo-400", bg: "bg-indigo-400/10" },
-            { name: "DALL-E 3", desc: "整合於 ChatGPT，完美理解提示詞的影像生成 AI。", cat: "image", icon: "image", url: "#", color: "text-rose-400", bg: "bg-rose-400/10" },
-            { name: "Leonardo.ai", desc: "基於 Stable Diffusion 的功能強大、介面友善的繪圖平台。", cat: "image", icon: "sparkles", url: "#", color: "text-amber-400", bg: "bg-amber-400/10" },
-            { name: "Adobe Firefly", desc: "Adobe 官方 AI，整合進 Photoshop，商用安全。", cat: "image", icon: "brush", url: "#", color: "text-red-500", bg: "bg-red-500/10" },
-
-            // Video/Audio - 視頻音頻
-            { name: "Runway Gen-3", desc: "AI 視頻生成領域的開創者，支援文生視頻、圖生視頻。", cat: "video", icon: "video", url: "#", color: "text-sky-400", bg: "bg-sky-400/10" },
-            { name: "Suno AI", desc: "輸入文字即可生成包含歌詞與人聲的完整歌曲。", cat: "video", icon: "music", url: "#", color: "text-lime-400", bg: "bg-lime-400/10" },
-            { name: "HeyGen", desc: "製作超逼真 AI 數位人視頻，支援多語言口型同步。", cat: "video", icon: "user-square", url: "#", color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
-            { name: "ElevenLabs", desc: "目前最逼真的 AI 語音生成與克隆技術。", cat: "video", icon: "mic", url: "#", color: "text-yellow-400", bg: "bg-yellow-400/10" },
-
-            // Productivity - 生產力
-            { name: "Gamma App", desc: "AI 生成 PPT、網頁與文檔，一鍵將想法視覺化。", cat: "productivity", icon: "layout", url: "#", color: "text-pink-400", bg: "bg-pink-400/10" },
-            { name: "Notion AI", desc: "將 AI 深度整合進筆記與項目管理，提升工作效率。", cat: "productivity", icon: "book", url: "#", color: "text-slate-200", bg: "bg-slate-200/10" },
-            { name: "Jasper", desc: "專為行銷團隊設計的 AI 寫作與文案生成工具。", cat: "productivity", icon: "pen-tool", url: "#", color: "text-blue-600", bg: "bg-blue-600/10" },
-
-            // Coding - 代碼開發
-            { name: "GitHub Copilot", desc: "編程必備的 AI 代碼補全與聊天助手。", cat: "coding", icon: "code", url: "#", color: "text-white", bg: "bg-slate-800" },
-            { name: "Cursor", desc: "基於 VS Code 的 AI IDE，能理解整個專案代碼庫。", cat: "coding", icon: "terminal", url: "#", color: "text-sky-300", bg: "bg-sky-300/10" },
-            { name: "v0.dev", desc: "Vercel 推出，輸入提示詞生成 Tailwind CSS 前端介面。", cat: "coding", icon: "triangle", url: "#", color: "text-teal-400", bg: "bg-teal-400/10" },
+            { name: "ChatGPT", desc_zh: "OpenAI 旗下的全能型 AI 助手，GPT-4o 驅動。", desc_en: "All-in-one AI assistant by OpenAI, powered by GPT-4o.", cat: "llm", icon: "message-circle", url: "#", color: "text-emerald-500", bg: "bg-emerald-500/10" },
+            { name: "Claude 3.5", desc_zh: "Anthropic 推出，長文本理解與代碼能力極強。", desc_en: "Powerful LLM from Anthropic, excellent at coding and long-context understanding.", cat: "llm", icon: "brain", url: "#", color: "text-orange-400", bg: "bg-orange-400/10" },
+            { name: "Google Gemini", desc_zh: "Google 原生多模態模型，深度整合 Google 生態。", desc_en: "Google's multimodal AI, deeply integrated with the Google ecosystem.", cat: "llm", icon: "search", url: "#", color: "text-blue-400", bg: "bg-blue-400/10" },
+            { name: "OpenClaw", desc_zh: "專為企業打造的私有化 AI Agent 網關解決方案。", desc_en: "Self-hosted AI Agent gateway solution built for enterprises.", cat: "productivity", icon: "shield", url: "#", color: "text-blue-400", bg: "bg-blue-400/10" },
+            { name: "Midjourney", desc_zh: "頂級 AI 繪圖工具，以超寫實與藝術感著稱。", desc_en: "Top-tier AI image generator known for its photorealism and artistic style.", cat: "image", icon: "palette", url: "#", color: "text-indigo-400", bg: "bg-indigo-400/10" },
+            { name: "Cursor", desc_zh: "基於 VS Code 的 AI IDE，能理解整個專案代碼庫。", desc_en: "AI-native code editor based on VS Code, understands your entire codebase.", cat: "coding", icon: "terminal", url: "#", color: "text-sky-300", bg: "bg-sky-300/10" }
         ];
 
-        // --- 2. 核心功能：動態生成工具卡片與廣告 ---
-        const grid = document.getElementById('tool-grid');
-        const adsenseSnippet = `
-            <div class="ad-placeholder p-6 rounded-2xl flex items-center justify-center text-center text-slate-600 text-xs h-full">
-                广告位<br>Google AdSense<br>(Square Ads)
-            </div>
-        `;
+        let currentLang = 'zh';
+        let currentCategory = 'all';
 
-        function renderTools(toolsToRender) {
-            grid.innerHTML = ''; // 清空現有卡片
+        // --- 3. 核心功能：語言切換 ---
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+
+            // 更新按鈕樣式
+            document.getElementById('lang-zh').className = lang === 'zh' ? 'px-3 py-1 rounded-md text-xs font-bold bg-blue-600 text-white' : 'px-3 py-1 rounded-md text-xs font-bold text-slate-400 hover:text-white';
+            document.getElementById('lang-en').className = lang === 'en' ? 'px-3 py-1 rounded-md text-xs font-bold bg-blue-600 text-white' : 'px-3 py-1 rounded-md text-xs font-bold text-slate-400 hover:text-white';
+
+            // 更新靜態文字
+            const t = i18n[lang];
+            document.getElementById('site-title').innerText = t.siteTitle;
+            document.getElementById('site-desc').content = t.siteDesc;
+            document.getElementById('nav-tools').innerText = t.navTools;
+            document.getElementById('nav-info').innerText = t.navInfo;
+            document.getElementById('nav-submit').innerText = t.navSubmit;
+            document.getElementById('main-h1').innerText = t.mainH1;
+            document.getElementById('main-p').innerText = t.mainP;
+            document.getElementById('news-title').innerText = t.newsTitle;
+            document.getElementById('view-more-btn').innerText = t.viewMore;
+            document.getElementById('footer-copy').innerText = t.footerCopy;
+            document.getElementById('footer-sub').innerText = t.footerSub;
+
+            // 更新分類列
+            const catBar = document.getElementById('category-bar');
+            catBar.innerHTML = Object.entries(t.categories).map(([key, value]) => `
+                <button class="category-btn ${currentCategory === key ? 'active' : ''} px-5 py-2 rounded-full text-slate-300 hover:text-white text-sm transition" onclick="filterTools('${key}', this)">${value}</button>
+            `).join('');
+
+            // 更新文章列表
+            const articleList = document.getElementById('article-list');
+            articleList.innerHTML = t.articles.map(art => `
+                <li><a href="#" class="text-sm text-slate-400 hover:text-blue-400 transition line-clamp-2">${art}</a></li>
+            `).join('');
+
+            renderTools();
+        }
+
+        // --- 4. 渲染工具卡片 ---
+        function renderTools() {
+            const grid = document.getElementById('tool-grid');
+            const filtered = currentCategory === 'all' ? aiTools : aiTools.filter(t => t.cat === currentCategory);
             
-            toolsToRender.forEach((tool, index) => {
-                // 生成工具卡片 HTML
-                const cardHTML = `
-                    <div class="tool-card glass p-6 rounded-2xl hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300 group" data-category="${tool.cat}">
+            grid.innerHTML = filtered.map((tool, index) => {
+                const card = `
+                    <div class="tool-card glass p-6 rounded-2xl hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
                         <div class="flex items-start justify-between mb-4">
-                            <div class="p-3 ${tool.bg} rounded-lg ${tool.color}">
-                                <i data-lucide="${tool.icon}"></i>
-                            </div>
+                            <div class="p-3 ${tool.bg} rounded-lg ${tool.color}"><i data-lucide="${tool.icon}"></i></div>
                             <a href="${tool.url}" target="_blank" class="text-slate-500 hover:text-white"><i data-lucide="external-link" class="w-5 h-5"></i></a>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition">${tool.name}</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">${tool.desc}</p>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-[10px] px-2.5 py-1 bg-slate-800 rounded-full uppercase font-bold text-slate-400 tracking-wider">${getCategoryName(tool.cat)}</span>
-                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">${currentLang === 'zh' ? tool.desc_zh : tool.desc_en}</p>
+                        <div class="flex items-center"><span class="text-[10px] px-2.5 py-1 bg-slate-800 rounded-full uppercase font-bold text-slate-400 tracking-wider">${i18n[currentLang].categories[tool.cat]}</span></div>
                     </div>
                 `;
-                grid.insertAdjacentHTML('beforeend', cardHTML);
+                return card + ((index + 1) % 6 === 0 ? `<div class="ad-placeholder p-6 rounded-2xl flex items-center justify-center text-center text-slate-600 text-xs h-full">Google AdSense</div>` : '');
+            }).join('');
 
-                // --- 變現邏輯：每 6 個工具後自動插入一個廣告位 ---
-                if ((index + 1) % 6 === 0 && (index + 1) !== toolsToRender.length) {
-                    grid.insertAdjacentHTML('beforeend', adsenseSnippet);
-                }
-            });
-
-            // 重新初始化圖標
             lucide.createIcons();
         }
 
-        // 輔助：獲取分類顯示名稱
-        function getCategoryName(cat) {
-            const names = { llm: "語言模型", image: "影像生成", video: "視頻音頻", productivity: "生產力工具", coding: "代碼開發" };
-            return names[cat] || cat;
-        }
-
-        // --- 3. 篩選功能 ---
         function filterTools(category, btn) {
-            // 切換按鈕活性樣式
+            currentCategory = category;
             document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            // 篩選數據
-            const filtered = category === 'all' ? aiTools : aiTools.filter(tool => tool.cat === category);
-            
-            // 重新渲染
-            renderTools(filtered);
+            renderTools();
         }
 
-        // --- 4. 初始化渲染 ---
-        renderTools(aiTools); // 初始載入全部
-
+        // 初始啟動
+        setLanguage('zh');
     </script>
 </body>
 </html>
