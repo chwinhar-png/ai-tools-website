@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/sitemap_v1.xml",
+      "source": "/sitemap_final.xml",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
